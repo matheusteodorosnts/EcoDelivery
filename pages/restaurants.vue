@@ -50,6 +50,7 @@ export default {
                         translateX: 250,
                         duration: 3000
                     })
+                    showDivDoneOrder.value = false
                 }, 4000);
             }
         };
