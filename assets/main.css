@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+body {
+    background: rgb(187,203,47);
+    background: linear-gradient(180deg, rgba(187,203,47,1) 0%, rgba(153,163,65,1) 70%);
+}
