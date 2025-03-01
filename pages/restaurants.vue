@@ -11,12 +11,13 @@ export default {
         const showScreenSelectFood = ref(true);
         const showDivDoneOrder = ref(false);
 
+        
+        // Methods
         const toggleScreenMcDonalds = () => {
             showScreenMcDonalds.value = !showScreenMcDonalds.value;
             showScreenSelectFood.value = !showScreenSelectFood.value;
         };
-
-        // Methods
+        
         const toggleScreenKFC = () => {
             showScreenKFC.value = !showScreenKFC.value;
             showScreenSelectFood.value = !showScreenSelectFood.value;
