@@ -49,9 +49,11 @@ export default {
                     anime({
                         targets: '#doneOrder',
                         translateX: 250,
-                        duration: 3000
+                        duration: 3000,
+                        complete: () => {
+                            showDivDoneOrder.value = false
+                        }
                     })
-                    showDivDoneOrder.value = false
                 }, 4000);
             }
         };
@@ -105,7 +107,7 @@ export default {
                     </div>
                     <!-- The most Rapid -->
                     <div class="flex flex-row gap-2 relative max-sm:left-8">
-                        <span class="absolute text-[#021908] bottom-20">The Most Famous</span>
+                        <span class="absolute text-[#021908] bottom-20">The Most Rapid</span>
                         <button @click="toggleScreenSubway" class="bg-[#021908] rounded w-20 h-20 cursor-pointer"><img src="../public/imgs/subwayImg.png"></button>
                         <button @click="toggleScreenKFC" class="bg-[#021908] rounded w-20 h-20 cursor-pointer"><img src="../public/imgs/kfcImg.png"></button>
                         <button @click="toggleScreenMcDonalds" class="bg-[#021908] rounded w-20 h-20 cursor-pointer"><img src="../public/imgs/mcdonaldsImg.png"></button>
