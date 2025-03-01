@@ -1,5 +1,6 @@
 <script>
 import { ref } from 'vue'
+import anime from 'animejs'
 
 export default {
     setup() {
@@ -8,7 +9,7 @@ export default {
         const showScreenKFC = ref(false);
         const showScreenSubway = ref(false);
         const showScreenSelectFood = ref(true);
-        const showDivOrder = ref(false);
+        const showDivDoneOrder = ref(false);
 
         const toggleScreenMcDonalds = () => {
             showScreenMcDonalds.value = !showScreenMcDonalds.value;
@@ -33,9 +34,26 @@ export default {
             showScreenSubway.value = false;
         };
 
-        const toggleDivOrder = () => {
-            alert("Done!")
+        const toggleDivDoneOrder = () => {
+            showDivDoneOrder.value = !showDivDoneOrder.value
+            if (showDivDoneOrder.value) {
+                setTimeout(() => {
+                    anime({
+                        targets: '#doneOrder',
+                        translateX: -250,
+                        duration: 3000
+                    })
+                }, 10);
+                setTimeout(() => {
+                    anime({
+                        targets: '#doneOrder',
+                        translateX: 250,
+                        duration: 3000
+                    })
+                }, 4000);
+            }
         };
+
 
         return {
             // Variables
@@ -43,13 +61,14 @@ export default {
             showScreenKFC,
             showScreenSubway,
             showScreenSelectFood,
+            showDivDoneOrder,
 
             // Methods
             toggleScreenMcDonalds,
             toggleScreenKFC,
             toggleScreenSubway,
             toggleScreenSelectFood,
-            toggleDivOrder,
+            toggleDivDoneOrder,
         }
     }
 }
@@ -58,6 +77,7 @@ export default {
 <template>
         <div class="flex flex-row justify-center items-center min-h-screen">
             <header class="absolute top-4 left-4">
+                <div v-if="showDivDoneOrder" id="doneOrder" class="bg-[#021908] rounded absolute left-380 max-sm:left-100 w-50 h-10 text-white flex flex-row justify-center items-center"><IconCircleCheck class="relative right-14"/>Done!</div>
                 <button><IconArrowLeft @click="toggleScreenSelectFood" v-if="!showScreenSelectFood" class="text-[#021908] cursor-pointer"/></button>
             </header>
             <main class="animate-jump-in font-[Lexend]">
@@ -94,7 +114,7 @@ export default {
                     <div class="rounded bg-[#021908] w-170 max-sm:w-90 h-80 flex flex-col justify-center items-center gap-2">
                         <h1 class="font-[Lilita_One] text-white text-4xl">Mc Donalds</h1>
                         <span class="text-white opacity-50">The Mc Donalds is a Company of Hamburguers.</span>
-                        <button @click="toggleDivOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
+                        <button @click="toggleDivDoneOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
                     </div>
                 </div>
                 <!-- Screen of Subway -->
@@ -102,7 +122,7 @@ export default {
                     <div class="rounded bg-[#021908] w-170 max-sm:w-90 h-80 flex flex-col justify-center items-center gap-2">
                         <h1 class="font-[Lilita_One] text-white text-4xl">Subway</h1>
                         <span class="text-white opacity-50">The Subway is a Company of breads high/extensive.</span>
-                        <button @click="toggleDivOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
+                        <button @click="toggleDivDoneOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
                     </div>
                 </div>
                 <!-- Screen of Subway -->
@@ -110,7 +130,7 @@ export default {
                     <div class="rounded bg-[#021908] w-170 max-sm:w-90 h-80 flex flex-col justify-center items-center gap-2">
                         <h1 class="font-[Lilita_One] text-white text-4xl">KFC</h1>
                         <span class="text-white opacity-50">The KFC is a Company of Chicken.</span>
-                        <button @click="toggleDivOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
+                        <button @click="toggleDivDoneOrder" class="bg-[#bbcb2f] rounded-full p-2 w-40 cursor-pointer border-2 border-[#bbcb2f] hover:bg-transparent transition-all duration-500 hover:text-[#bbcb2f]">Order</button>
                     </div>
                 </div>
             </main>
